@@ -3,3 +3,6 @@
 *.swa
 *.swm
 *.swn
+./venv
+venv
+*venv/
