@@ -1,0 +1,29 @@
+<div class='login-view'>
+    <section class='centered-content first-section'>
+        <img class='avatar' src='static/image/DefaultUserPicture.png' alt> 
+    </section>
+    <section>
+        <form class='centered-content'>
+            <section class='centered-content'>
+                <label for='email'>E-mail address:</label>
+                <input type='email' id='login-email' placeholder='johndoe@johndoe.com'>
+                <label for='password'>Password:</label>
+                <input type='password' id='login-password' placeholder='*******'>
+            </section>
+            <section>
+                <label><input type="checkbox" />Remember me</label>
+                <label><input type="checkbox" />Remember my password</label>
+                <label><input type="checkbox" />Sign me in automatically</label>
+            </section>
+            <section class='centered-content'>
+                <input type='button' id='login-button' value='login'>
+            </section>
+            <section>
+                <label><a onclick='set_view("register-view"); return false;'>Sign up</a></label>
+            </section>
+            <section>
+                <label><p id='login-response'></p></label>
+            </section>
+        </form>
+    </section>
+</div>

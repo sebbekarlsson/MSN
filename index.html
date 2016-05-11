@@ -1,34 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Windows Live Messenger</title>
-<link rel='stylesheet' type='text/css' href='static/css/style.css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<div class='login-view'>
-    <section class='centered-content first-section'>
-        <img class='avatar' src='static/image/DefaultUserPicture.png' alt> 
-    </section>
-    <section>
-        <form action class='centered-content'>
-            <section class='centered-content'>
-                <label for='email'>E-mail address:</label>
-                <input type='email' id='email' placeholder='johndoe@johndoe.com'>
-                <label for='password'>Password:</label>
-                <input type='password' id='password' placeholder='*******'>
-            </section>
-            <section>
-                <label><input type="checkbox" />Remember me</label>
-                <label><input type="checkbox" />Remember my password</label>
-                <label><input type="checkbox" />Sign me in automatically</label>
-            </section>
-            <section class='centered-content'>
-                <input type='button' value='login'>
-            </section>
-        </form>
-    </section>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Windows Live Messenger</title>
+        <link rel='stylesheet' type='text/css' href='static/css/style.css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script>
+            function hide_view(view_id) {
+                let view = document.getElementById(view_id);
+                view.className += ' hidden';
+            }
+
+            function set_view(view_id) {
+                let view = document.getElementById(view_id);
+                let views = document.querySelectorAll('.view');
+                for(var ii = 0; ii < views.length; ii++) {
+                    let v = views[ii];
+                    if (v == view) { continue; }
+
+                    if (v.className.indexOf(' hidden') == -1) {
+                        v.className += ' hidden';
+                    }
+                }
+                view.className = view.className.replace(' hidden', '');
+            }
+
+            function login(_email, _password, callback) {
+                var request = require('request');
+
+                request.post(
+                    'http://127.0.0.1:5000/login',
+                    { form: { email: _email, password: _password } },
+                    function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            callback(JSON.parse(body));
+                        }
+                    }
+                );
+            }
+
+            function register(_firstname, _lastname, _email, _password, callback) {
+                var request = require('request');
+
+                request.post(
+                    'http://127.0.0.1:5000/register',
+                    {
+                        form: {
+                            firstname: _firstname,
+                            lastname: _lastname,
+                            email: _email,
+                            password: _password
+                        }
+                    },
+                    function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            callback(JSON.parse(body));
+                        }
+                    }
+                );
+            }
+            
+        </script>
+    </head>
+    <body>
+
+        <!-- VIEWS -->
+        <div class='view fade-in hidden' id='login-view' file='login.html'></div>
+        <div class='view fade-in hidden' id='chat-view' file='chat.html'></div>
+        <div class='view fade-in hidden' id='register-view' file='register.html'></div>
+        <!-- END OF VIEWS -->
+
+        <script>
+            var fs = require('fs');
+            let views = document.querySelectorAll('.view');
+
+            for(var ii = 0; ii < views.length; ii++) {
+                let v = views[ii];
+                console.log(v);
+                fs.readFile('views/' + v.getAttribute('file'), 'utf8', function (err, data) {
+                    v.innerHTML = data;
+                });
+            }
+            
+            set_view('login-view');
+
+setTimeout(function(){
+            document.getElementById('login-button').addEventListener('click', function() {
+                login(
+                    document.getElementById('login-email').value,
+                    document.getElementById('login-password').value,
+                    function(resp){
+                        if (resp.response.text == 'OK' && resp.response.token != '') {
+                            set_view('chat-view');
+                        } else {
+                            document.getElementById('login-response').innerHTML = resp.response.text;
+                        }
+                    }
+                );
+            });
+
+            document.getElementById('register-button').addEventListener('click', function() {
+                register(
+                    document.getElementById('register-firstname').value,
+                    document.getElementById('register-lastname').value,
+                    document.getElementById('register-email').value,
+                    document.getElementById('register-password').value,
+                    function(resp){
+                        document.getElementById('register-response').innerHTML = resp.response.text;
+                    }
+                );
+            });
+            }, 3000);
+        </script>
+    </body>
 </html>

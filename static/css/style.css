@@ -1,3 +1,14 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    display: block; }
+  to {
+    opacity: 1; } }
+/* The element to apply the animation to */
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 2s; }
+
 * {
   margin: 0px;
   padding: 0px;
@@ -98,6 +109,14 @@ form {
 .avatar {
   width: 128px;
   height: 128px; }
+
+.hidden {
+  opacity: 0;
+  display: none; }
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline; }
 
 html, body {
   width: 100%;

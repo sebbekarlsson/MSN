@@ -1,3 +1,6 @@
+@import 'animations.scss';
+
+
 * {
     margin: 0px;
     padding: 0px;
@@ -125,6 +128,18 @@ form {
 .avatar {
     width: 128px;
     height: 128px;
+}
+
+.hidden {
+    opacity: 0;
+    display: none;
+}
+
+a {
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
 
 html, body {

@@ -1,0 +1,10 @@
+@keyframes fade-in {
+    from {opacity: 0; display: block;}
+    to {opacity: 1;}
+}
+
+/* The element to apply the animation to */
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 2s;
+}
