@@ -1,0 +1,106 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Open Sans', sans-serif; }
+
+.login-view {
+  height: 100vh;
+  background-image: url("../image/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: flex-end;
+  flex-direction: column; }
+  .login-view .first-section {
+    height: 360px !important; }
+
+.login-view section {
+  width: 100%;
+  height: 100%; }
+
+.centered-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+form {
+  width: 70% !important;
+  margin: auto; }
+  form section {
+    padding: 1em; }
+  form input[type='email'], form input[type='password'] {
+    margin-bottom: 1em;
+    height: 20px;
+    width: 100%;
+    display: block;
+    background-color: white;
+    outline: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 2px;
+    padding: 2px; }
+  form button {
+    background: none;
+    border: none;
+    padding: 0; }
+  form button span {
+    display: block;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    padding: 0;
+    background: #F0F0F0;
+    background: -moz-linear-gradient(top, #F0F0F0 50%, #D4D4D4 50%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #F0F0F0), color-stop(50%, #D4D4D4));
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F0F0F0', endColorstr='#D4D4D4',GradientType=0 ); }
+  form label {
+    text-align: left;
+    width: 100%;
+    font-size: 0.8em;
+    display: block; }
+  form button span span {
+    border: 1px solid #fff;
+    padding: 10px; }
+  form input[type="button"] {
+    cursor: pointer;
+    border: 1px solid #707070;
+    background-color: #F0F0F0;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #DDD;
+    -o-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #DDD;
+    -webkit-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #DDD;
+    -moz-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #DDD;
+    padding: 3px 6px; }
+  form input[type="button"]:hover {
+    cursor: pointer;
+    background-color: #EAF6FD;
+    border: 1px solid #3C7FB1;
+    box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #BEE6FD, 0 0 3px #A7D9F5;
+    -o-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #BEE6FD, 0 0 3px #A7D9F5;
+    -webkit-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #BEE6FD, 0 0 3px #A7D9F5;
+    -moz-box-shadow: inset 0 1px 2px #fff, inset 0 -0.7em #BEE6FD, 0 0 3px #A7D9F5; }
+  form input[type="button"][disabled], form input[type="button"][disabled]:hover {
+    border: 1px solid #ADB2B5;
+    text-shadow: 1px 1px #fff;
+    cursor: default;
+    background-color: #F4F4F4;
+    box-shadow: inset 0 1px 2px #fff;
+    -o-box-shadow: inset 0 1px 2px #fff;
+    -webkit-box-shadow: inset 0 1px 2px #fff;
+    -moz-box-shadow: inset 0 1px 2px #fff; }
+
+.avatar {
+  width: 128px;
+  height: 128px; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+/*# sourceMappingURL=style.css.map */
