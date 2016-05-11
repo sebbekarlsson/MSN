@@ -1,4 +1,6 @@
 const electron = require('electron');
+const {Menu, MenuItem} = electron;
+
 const fs = require('fs');
 // Module to control application life.
 const {app} = electron;
@@ -15,7 +17,10 @@ function createWindow() {
 
     // and load the index.html of the app.
     win.loadURL(`file://${__dirname}/index.html`);
-
+    
+    //var menubar = new Menu();
+    //menubar.append(new MenuItem({label: 'MenuItem1', click() { console.log('item 1 clicked'); }}));
+    //win.setMenu(menubar);
     // Emitted when the window is closed.
     win.on('closed', () => {
         // Dereference the window object, usually you would store windows
