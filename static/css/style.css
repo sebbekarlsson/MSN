@@ -14,20 +14,61 @@
   padding: 0px;
   font-family: 'Open Sans', sans-serif; }
 
-.login-view {
-  height: 100vh;
+body {
+  display: flex;
+  flex-direction: column; }
+
+.view {
   background-image: url("../image/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: flex-end;
-  flex-direction: column; }
-  .login-view .first-section {
-    height: 360px !important; }
+  flex-direction: column;
+  min-height: 100vh; }
 
 .login-view section {
   width: 100%;
   height: 100%; }
+
+#app-view .first-section {
+  height: 100px !important;
+  background-image: url("../image/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  #app-view .first-section .avatar-part {
+    width: 20%;
+    padding: 1em; }
+    #app-view .first-section .avatar-part .avatar {
+      width: 64px;
+      height: 64px; }
+  #app-view .first-section .info-part h3 {
+    font-size: 1em; }
+  #app-view .first-section .info-part p {
+    font-size: 0.8em; }
+#app-view .misc-menu {
+  height: 32px;
+  background-color: white;
+  width: 100%; }
+  #app-view .misc-menu ul, #app-view .misc-menu li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 4px;
+    margin-right: 4px; }
+  #app-view .misc-menu li span {
+    font-size: 0.6em;
+    height: 16px;
+    line-height: 16px; }
+    #app-view .misc-menu li span img {
+      width: 16px;
+      height: 16px; }
+
+.login-view .first-section {
+  height: 360px !important; }
 
 .centered-content {
   width: 100%;
@@ -121,5 +162,39 @@ a:hover {
 html, body {
   width: 100%;
   height: 100%; }
+
+.contact-list {
+  list-style: none;
+  display: block; }
+  .contact-list li {
+    display: block;
+    width: 100%; }
+    .contact-list li .contact {
+      height: 2em;
+      line-height: 2em;
+      padding-left: 1em;
+      width: 100%;
+      background-color: white;
+      display: block;
+      outline-color: lightgray;
+      outline-style: solid;
+      outline-width: 1px;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .contact-list li .contact .contact-icon {
+        width: 16px;
+        height: 16px; }
+      .contact-list li .contact label {
+        font-size: 0.8em;
+        padding: 1em; }
+      .contact-list li .contact p {
+        padding: 1em; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */

@@ -7,23 +7,92 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.login-view {
-    height: 100vh;
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.view {
     background-image: url('../image/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: flex-end;
     flex-direction: column;
+    min-height: 100vh;
+}
 
-    .first-section {
-        height: 360px !important;
-    }
+#login-view, #register-view, #app-view {
 }
 
 .login-view section {
     width: 100%;
     height: 100%;
+}
+
+#app-view {
+    .first-section {
+        height: 100px !important;
+        background-image: url('../image/bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .avatar-part {
+            width: 20%;
+            padding: 1em;
+            .avatar {
+                width: 64px;
+                height: 64px;
+                
+            }
+        }
+
+        .info-part {
+            h3 {
+                font-size: 1em;
+            }
+
+            p {
+                font-size: 0.8em;
+            }
+        }
+    }
+
+    .misc-menu {
+        height: 32px;
+        background-color: white;
+        width: 100%;
+
+        ul, li {
+            display: inline-block;
+            list-style: none;
+            margin-left: 4px;
+            margin-right: 4px;
+
+        }
+
+        li {
+            span {
+                font-size: 0.6em;
+                height: 16px;
+                line-height: 16px;
+
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+}
+
+.login-view {
+    .first-section {
+        height: 360px !important;
+    }
 }
 
 .centered-content {
@@ -41,7 +110,7 @@ form {
     section {
         padding: 1em;
     }
-    
+
     input[type='email'], input[type='password'] {
         margin-bottom: 1em;
         height: 20px;
@@ -145,4 +214,52 @@ a {
 html, body {
     width: 100%;
     height: 100%;
+}
+
+.contact-list {
+    list-style: none;
+    display: block;
+
+    li {
+        display: block;
+        width: 100%;
+
+        .contact {
+            height: 2em;
+            line-height: 2em;
+            padding-left: 1em;
+            width: 100%;
+            background-color: white;
+            display: block;
+            outline-color: lightgray;
+            outline-style: solid;
+            outline-width: 1px;
+
+            .contact-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            label {
+                font-size: 0.8em;
+                padding: 1em;
+            }
+
+            p {
+                padding: 1em;
+            }
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
 }

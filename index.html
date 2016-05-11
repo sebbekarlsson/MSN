@@ -66,7 +66,7 @@
 
         <!-- VIEWS -->
         <div class='view fade-in hidden' id='login-view' file='login.html'></div>
-        <div class='view fade-in hidden' id='chat-view' file='chat.html'></div>
+        <div class='view fade-in hidden' id='app-view' file='app.html'></div>
         <div class='view fade-in hidden' id='register-view' file='register.html'></div>
         <!-- END OF VIEWS -->
 
@@ -90,8 +90,8 @@ setTimeout(function(){
                     document.getElementById('login-email').value,
                     document.getElementById('login-password').value,
                     function(resp){
-                        if (resp.response.text == 'OK' && resp.response.token != '') {
-                            set_view('chat-view');
+                        if (resp.response.text == 'OK') {
+                            set_view('app-view');
                         } else {
                             document.getElementById('login-response').innerHTML = resp.response.text;
                         }
