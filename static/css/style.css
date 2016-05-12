@@ -95,6 +95,61 @@
           width: 16px;
           height: 16px;
           padding-top: 0.8em; }
+  #app-view .search-bar {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    height: 3.2em;
+    align-items: center;
+    -moz-box-shadow: inset  0  8px 8px -8px #696868;
+    -webkit-box-shadow: inset  0  8px 8px -8px #696868;
+    box-shadow: inset  0  8px 8px -8px #696868;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: lightgray; }
+    #app-view .search-bar .part {
+      padding-top: 0.5em;
+      padding-left: 0.5em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%; }
+      #app-view .search-bar .part input[type='text'] {
+        margin-bottom: 1em;
+        height: 24px;
+        width: 100%;
+        display: block;
+        background-color: white;
+        outline: none;
+        border-style: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        border-radius: 2px;
+        padding: 2px;
+        -moz-box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868;
+        -webkit-box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868;
+        box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868; }
+      #app-view .search-bar .part ul, #app-view .search-bar .part li {
+        display: inline-block;
+        margin-left: 4px;
+        margin-right: 4px; }
+      #app-view .search-bar .part li {
+        position: relative; }
+        #app-view .search-bar .part li span {
+          font-size: 0.6em;
+          height: 16px;
+          line-height: 16px;
+          text-align: center;
+          margin: 0 auto;
+          position: relative; }
+          #app-view .search-bar .part li span img {
+            width: 16px;
+            height: 16px; }
+    #app-view .search-bar .search-part {
+      width: 70%; }
+    #app-view .search-bar .buttons-part {
+      width: 30%;
+      text-align: right; }
 
 .login-view .first-section {
   height: 360px !important; }
