@@ -11,6 +11,9 @@ const {BrowserWindow} = electron;
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
+global.user = {user_id: ''};
+global.clicked_contact = {user_id: ''}
+
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({width: 360, height: 770});

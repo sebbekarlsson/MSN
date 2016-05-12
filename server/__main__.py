@@ -1,9 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from server.models import User
 from server.mongo import db
+from server.utils import id_generator
+from bson.objectid import ObjectId
+
 
 app = Flask(__name__)
-
+app.secret_key = 'dot123123'
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -20,8 +23,23 @@ def login():
 
     if password != existing_user['password']:
         return jsonify({'response': {'text': 'Wrong password.'}})
-
-    return jsonify({'response': {'text': 'OK', 'token': ''}})
+    
+    token = id_generator()
+    db.collections.update(
+            {'structure': '#User', '_id': existing_user['_id']},
+            {'$set' : {'token': token}}
+            )
+    
+    session['user_id'] = str(existing_user['_id'])
+    return jsonify(
+            {
+                'response': {
+                    'text': 'OK',
+                    'token': token,
+                    'user_id': str(existing_user['_id'])
+                    }
+                }
+            )
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -60,6 +78,24 @@ def register():
                 )
         db.collections.insert_one(user.export())
         return jsonify({'response': {'text': 'OK'}})
+
+
+@app.route('/user', defaults={'user_id': None})
+@app.route('/user/<user_id>')
+def get_user(user_id):
+    if user_id is None:
+        user_id = sesion['user_id']
+
+    user = db.collections.find_one({'structure': '#User', '_id': ObjectId(user_id)})
+    contacts = []
+    
+    for contact in user['contacts']:
+        contacts.append(str(contact))
+
+    if user is not None:
+        return jsonify({'firstname': user['firstname'], 'contacts': contacts, 'user_id': user_id})
+    else:
+        return jsonify({'user': 'None'})
 
 if __name__ == '__main__':
     app.run(debug=True)

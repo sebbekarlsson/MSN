@@ -5,62 +5,7 @@
         <title>Windows Live Messenger</title>
         <link rel='stylesheet' type='text/css' href='static/css/style.css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <script>
-            function hide_view(view_id) {
-                let view = document.getElementById(view_id);
-                view.className += ' hidden';
-            }
-
-            function set_view(view_id) {
-                let view = document.getElementById(view_id);
-                let views = document.querySelectorAll('.view');
-                for(var ii = 0; ii < views.length; ii++) {
-                    let v = views[ii];
-                    if (v == view) { continue; }
-
-                    if (v.className.indexOf(' hidden') == -1) {
-                        v.className += ' hidden';
-                    }
-                }
-                view.className = view.className.replace(' hidden', '');
-            }
-
-            function login(_email, _password, callback) {
-                var request = require('request');
-
-                request.post(
-                    'http://127.0.0.1:5000/login',
-                    { form: { email: _email, password: _password } },
-                    function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                            callback(JSON.parse(body));
-                        }
-                    }
-                );
-            }
-
-            function register(_firstname, _lastname, _email, _password, callback) {
-                var request = require('request');
-
-                request.post(
-                    'http://127.0.0.1:5000/register',
-                    {
-                        form: {
-                            firstname: _firstname,
-                            lastname: _lastname,
-                            email: _email,
-                            password: _password
-                        }
-                    },
-                    function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                            callback(JSON.parse(body));
-                        }
-                    }
-                );
-            }
-            
-        </script>
+        <script src='application.js'></script>
     </head>
     <body>
 
@@ -72,17 +17,17 @@
 
         <script>
             var fs = require('fs');
+            var remote = require('electron').remote;
             let views = document.querySelectorAll('.view');
 
             for(var ii = 0; ii < views.length; ii++) {
                 let v = views[ii];
-                console.log(v);
                 fs.readFile('views/' + v.getAttribute('file'), 'utf8', function (err, data) {
                     v.innerHTML = data;
                 });
             }
             
-            set_view('app-view');
+            set_view('login-view');
 
 setTimeout(function(){
             document.getElementById('login-button').addEventListener('click', function() {
@@ -90,7 +35,12 @@ setTimeout(function(){
                     document.getElementById('login-email').value,
                     document.getElementById('login-password').value,
                     function(resp){
-                        if (resp.response.text == 'OK') {
+                        if (resp.response.text == 'OK' && resp.response.token != '') {
+                            remote.getGlobal('user').user_id = resp.response.user_id;
+                            get_user(resp.response.user_id, function(body) {
+                                update_userinfo(body);
+                                update_contacts(body.contacts);
+                            });
                             set_view('app-view');
                         } else {
                             document.getElementById('login-response').innerHTML = resp.response.text;

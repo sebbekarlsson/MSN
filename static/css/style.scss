@@ -17,6 +17,7 @@ $color_select: #D6F1FF;
     flex-direction: flex-end;
     flex-direction: column;
     position: relative;
+    min-height: 100vh;
 }
 
 #login-view, #register-view, #app-view {
@@ -47,11 +48,11 @@ $color_select: #D6F1FF;
     }
 }
 
-#app-view {
+#app-view, #chat-view {
     position: relative;
 
     .first-section {
-        height: 100px !important;
+        height: 100px;
         background-image: url('../image/bluemetal.jpg');
         background-size: cover;
         background-repeat: no-repeat;
@@ -88,6 +89,7 @@ $color_select: #D6F1FF;
         height: 32px;
         background-color: white;
         width: 100%;
+        flex: 0;
 
         ul, li {
             display: inline-block;
@@ -195,9 +197,40 @@ $color_select: #D6F1FF;
     }
 }
 
+#chat-view {
+    position: relative;
+
+    .first-section {
+        height: 86px !important;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a0d8ef+0,ddf1f9+65,feffff+100 */
+        background: rgb(160,216,239); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(160,216,239,1) 0%, rgba(221,241,249,1) 65%, rgba(254,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(160,216,239,1) 0%,rgba(221,241,249,1) 65%,rgba(254,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(160,216,239,1) 0%,rgba(221,241,249,1) 65%,rgba(254,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0d8ef', endColorstr='#feffff',GradientType=0 ); /* IE6-9 */
+        flex: 0;
+    }
+
+    .chat-text {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        flex: 1;
+    }
+
+    .chat-input-part {
+        height: 100px;
+        width: 100%;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: lightgray;
+        background-color: white;
+    }
+}
+
 .login-view {
     .first-section {
-        height: 360px !important;
+        height: 256px !important;
     }
 }
 

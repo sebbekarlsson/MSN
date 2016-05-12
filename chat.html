@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Windows Live Messenger</title>
+        <link rel='stylesheet' type='text/css' href='static/css/style.css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src='application.js'></script>
+    </head>
+    <body>
+        <div class='view' id='chat-view'>
+            <input type='hidden' name='user-id' id='user-id'>
+            <section class='first-section'>
+                <div class='avatar-part'>
+                    <img class='avatar' src='static/image/DefaultUserPicture.png' alt> 
+                </div>
+                <div class='info-part'>
+                    <h3 id='firstname'></h3>
+                </div>
+            </section>
+            <section class='chat-text'>
+            </section>
+            <section class='chat-input-part'>
+            </section>
+        </div>
+        <script>
+            var remote = require('electron').remote;
+            get_user(remote.getGlobal('clicked_contact').user_id, function(user) {
+                document.getElementById('firstname').innerHTML = user.firstname;
+                document.getElementById('user-id').value = user.user_id;
+            });
+        </script>
+    </body>
+</html>

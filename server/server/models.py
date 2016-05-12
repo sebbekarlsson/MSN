@@ -58,6 +58,7 @@ class User(DBObject):
             password='',
             avatar='',
             token='',
+            contacts=[],
             *args,
             **kwargs
             ):
@@ -68,6 +69,7 @@ class User(DBObject):
         self.password = password
         self.avatar = avatar
         self.token = token
+        self.contacts = contacts
 
 
 class Option(DBObject):

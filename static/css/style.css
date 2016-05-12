@@ -21,7 +21,8 @@
   display: flex;
   flex-direction: flex-end;
   flex-direction: column;
-  position: relative; }
+  position: relative;
+  min-height: 100vh; }
 
 .login-view section {
   width: 100%;
@@ -49,10 +50,10 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8e1fc', endColorstr='#bdf3fd',GradientType=0 );
     /* IE6-9 */ }
 
-#app-view {
+#app-view, #chat-view {
   position: relative; }
-  #app-view .first-section {
-    height: 100px !important;
+  #app-view .first-section, #chat-view .first-section {
+    height: 100px;
     background-image: url("../image/bluemetal.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -61,41 +62,42 @@
     flex-direction: row;
     align-items: center;
     position: relative; }
-    #app-view .first-section .avatar-part {
+    #app-view .first-section .avatar-part, #chat-view .first-section .avatar-part {
       z-index: 40;
       width: 20%;
       padding: 1em; }
-      #app-view .first-section .avatar-part .avatar {
+      #app-view .first-section .avatar-part .avatar, #chat-view .first-section .avatar-part .avatar {
         width: 64px;
         height: 64px; }
-    #app-view .first-section .info-part {
+    #app-view .first-section .info-part, #chat-view .first-section .info-part {
       z-index: 40; }
-      #app-view .first-section .info-part h3 {
+      #app-view .first-section .info-part h3, #chat-view .first-section .info-part h3 {
         font-size: 1em; }
-      #app-view .first-section .info-part p {
+      #app-view .first-section .info-part p, #chat-view .first-section .info-part p {
         font-size: 0.8em; }
-  #app-view .misc-menu {
+  #app-view .misc-menu, #chat-view .misc-menu {
     height: 32px;
     background-color: white;
-    width: 100%; }
-    #app-view .misc-menu ul, #app-view .misc-menu li {
+    width: 100%;
+    flex: 0; }
+    #app-view .misc-menu ul, #app-view .misc-menu li, #chat-view .misc-menu ul, #chat-view .misc-menu li {
       display: inline-block;
       margin-left: 4px;
       margin-right: 4px; }
-    #app-view .misc-menu li {
+    #app-view .misc-menu li, #chat-view .misc-menu li {
       position: relative; }
-      #app-view .misc-menu li span {
+      #app-view .misc-menu li span, #chat-view .misc-menu li span {
         font-size: 0.6em;
         height: 16px;
         line-height: 16px;
         text-align: center;
         margin: 0 auto;
         position: relative; }
-        #app-view .misc-menu li span img {
+        #app-view .misc-menu li span img, #chat-view .misc-menu li span img {
           width: 16px;
           height: 16px;
           padding-top: 0.8em; }
-  #app-view .search-bar {
+  #app-view .search-bar, #chat-view .search-bar {
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -107,14 +109,14 @@
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: lightgray; }
-    #app-view .search-bar .part {
+    #app-view .search-bar .part, #chat-view .search-bar .part {
       padding-top: 0.5em;
       padding-left: 0.5em;
       display: flex;
       flex-direction: row;
       align-items: center;
       width: 100%; }
-      #app-view .search-bar .part input[type='text'] {
+      #app-view .search-bar .part input[type='text'], #chat-view .search-bar .part input[type='text'] {
         margin-bottom: 1em;
         height: 24px;
         width: 100%;
@@ -129,30 +131,59 @@
         -moz-box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868;
         -webkit-box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868;
         box-shadow: inset  0  2px 2px -2px #696868,  inset  0 -2px 2px -2px #696868; }
-      #app-view .search-bar .part ul, #app-view .search-bar .part li {
+      #app-view .search-bar .part ul, #app-view .search-bar .part li, #chat-view .search-bar .part ul, #chat-view .search-bar .part li {
         display: inline-block;
         margin-left: 4px;
         margin-right: 4px; }
-      #app-view .search-bar .part li {
+      #app-view .search-bar .part li, #chat-view .search-bar .part li {
         position: relative; }
-        #app-view .search-bar .part li span {
+        #app-view .search-bar .part li span, #chat-view .search-bar .part li span {
           font-size: 0.6em;
           height: 16px;
           line-height: 16px;
           text-align: center;
           margin: 0 auto;
           position: relative; }
-          #app-view .search-bar .part li span img {
+          #app-view .search-bar .part li span img, #chat-view .search-bar .part li span img {
             width: 16px;
             height: 16px; }
-    #app-view .search-bar .search-part {
+    #app-view .search-bar .search-part, #chat-view .search-bar .search-part {
       width: 70%; }
-    #app-view .search-bar .buttons-part {
+    #app-view .search-bar .buttons-part, #chat-view .search-bar .buttons-part {
       width: 30%;
       text-align: right; }
 
+#chat-view {
+  position: relative; }
+  #chat-view .first-section {
+    height: 86px !important;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a0d8ef+0,ddf1f9+65,feffff+100 */
+    background: #a0d8ef;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #a0d8ef 0%, #ddf1f9 65%, #feffff 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #a0d8ef 0%, #ddf1f9 65%, #feffff 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #a0d8ef 0%, #ddf1f9 65%, #feffff 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0d8ef', endColorstr='#feffff',GradientType=0 );
+    /* IE6-9 */
+    flex: 0; }
+  #chat-view .chat-text {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    flex: 1; }
+  #chat-view .chat-input-part {
+    height: 100px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: lightgray;
+    background-color: white; }
+
 .login-view .first-section {
-  height: 360px !important; }
+  height: 256px !important; }
 
 .centered-content {
   width: 100%;
